@@ -20,8 +20,12 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
    Read each prose paragraph. If it contains 3+ sentences that each describe one
    discrete item (no causal link, no explanation between them), convert to bullet list.
 
-   **Step B — Sentence length scan**
-   Find every sentence over 40 characters. Split or add a comma.
+   **Step B — Line break scan**
+   Count characters. When you hit character 40, break. No exceptions, no judgment.
+   Then check paragraph boundaries, headings, and list blocks for blank line rules.
+
+   **Step C — Checklist**
+   — (merged into Step D below)
 
    **Step C — Checklist**
    Go through the checklist below item by item. Rewrite anything that fails.
@@ -52,7 +56,9 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
 
 ### Sentence quality
 - [ ] One piece of information per sentence
-- [ ] Each sentence is 40 characters or fewer (split or add a comma if over)
+- [ ] Prose: every 読点 is followed by a newline — no exceptions
+- [ ] Prose: every line is 40 characters or fewer — break at character 40 if no 読点
+- [ ] List items: one line each, no mid-item breaks, ≤40 characters
 - [ ] Deeply nested modifiers extracted into a separate sentence
 - [ ] Trimming did not erase meaning — if it did, reword instead of delete
 - [ ] No sentences ending with abstract nouns (効率化・品質向上 etc.) — follow with "what" and "how it changes"
@@ -64,6 +70,16 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
 - [ ] 〜を行います → 〜します
 - [ ] 〜が提供されています → 〜を使えます
 - [ ] Unnecessary katakana loanwords replaced with Japanese equivalents
+
+### Line breaks
+- [ ] Prose: every line is exactly ≤40 characters — break at character 40, no exceptions
+- [ ] List items: never break mid-item — rewrite to fit on one line (≤40 chars)
+- [ ] One blank line between paragraphs
+- [ ] One blank line before every heading
+- [ ] No blank line immediately after a heading — body text follows directly
+- [ ] No blank lines between list items
+- [ ] One blank line before and after a list block
+- [ ] No 読点 (、) at the end of a sentence — close with 。
 
 ### Boilerplate removal
 - [ ] 本ドキュメントでは〜説明します → deleted
