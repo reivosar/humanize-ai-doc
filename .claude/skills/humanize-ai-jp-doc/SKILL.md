@@ -6,13 +6,13 @@ version: 2.0.0
 
 You are an expert at rewriting AI-generated Japanese text into natural, readable Japanese.
 
-The definition of readable Japanese and all conversion rules are in `READABLE_JAPANESE.md` in this skill directory. Read it first.
+The definition of readable Japanese and all conversion rules are in `.claude/rules/language-settings.md`. Read it first.
 
 ## Process
 
-1. Read `READABLE_JAPANESE.md`
+1. Read `.claude/rules/language-settings.md`
 2. Read the target file or text
-3. Rewrite following the rules in `READABLE_JAPANESE.md`
+3. Rewrite following the rules in `.claude/rules/language-settings.md`
 4. If a file was provided, save it
 5. Before finalizing, run this 3-step scan on your output:
 
@@ -20,12 +20,9 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
    Read each prose paragraph. If it contains 3+ sentences that each describe one
    discrete item (no causal link, no explanation between them), convert to bullet list.
 
-   **Step B — Line break scan**
-   Count characters. When you hit character 40, break. No exceptions, no judgment.
-   Then check paragraph boundaries, headings, and list blocks for blank line rules.
-
-   **Step C — Checklist**
-   — (merged into Step D below)
+   **Step B — Spacing scan**
+   Check paragraph boundaries, headings, and list blocks for blank line rules.
+   Check list items are not broken mid-item.
 
    **Step C — Checklist**
    Go through the checklist below item by item. Rewrite anything that fails.
@@ -33,16 +30,16 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
 ## Post-rewrite verification checklist
 
 ### Conclusion first
-- [ ] Each section/paragraph opens with the conclusion; details follow
+- [ ] Check language-settings.md — Conclusion first
 
-### Specificity (人間らしさ)
-- [ ] No vague/generic expressions — write "when", "what", "what for" concretely
+### Specificity
+- [ ] Check language-settings.md — Specificity, Comparison, Numbers
 
 ### Headings
 - [ ] `#` used only for the document title (one per document)
 - [ ] Body text follows every heading — no consecutive headings
 - [ ] Only `##` and `###` used (never `####` or deeper)
-- [ ] Every heading ends with a noun (体言止め)
+- [ ] Headings end with a noun-stop form in principle; verb endings allowed when flow demands it
 
 ### Lists vs prose
 - [ ] Procedural steps → numbered list
@@ -55,32 +52,28 @@ The definition of readable Japanese and all conversion rules are in `READABLE_JA
 - [ ] Indent depth is 1 level max
 
 ### Sentence quality
+- [ ] One sentence per line — never run two sentences on the same line
+- [ ] Blank line at every change of idea or topic
+- [ ] Each paragraph covers exactly one topic — no unrelated sentences mixed in
 - [ ] One piece of information per sentence
-- [ ] Prose: every 読点 is followed by a newline — no exceptions
-- [ ] Prose: every line is 40 characters or fewer — break at character 40 if no 読点
-- [ ] List items: one line each, no mid-item breaks, ≤40 characters
-- [ ] Deeply nested modifiers extracted into a separate sentence
+- [ ] Sentences are short and clear — split long sentences
+- [ ] List items: one line each, no mid-item breaks — rewrite to shorten if needed
 - [ ] Trimming did not erase meaning — if it did, reword instead of delete
-- [ ] No sentences ending with abstract nouns (効率化・品質向上 etc.) — follow with "what" and "how it changes"
+- [ ] Check language-settings.md — Subject/predicate, Negative form, Nested modifiers, Abstract nouns
 
 ### Word choice
-- [ ] Demonstratives (これ・その・ここ etc.) replaced with concrete nouns
-- [ ] No consecutive また / さらに / なお — keep one or delete
-- [ ] 〜することができます → 〜できます
-- [ ] 〜を行います → 〜します
-- [ ] 〜が提供されています → 〜を使えます
-- [ ] Unnecessary katakana loanwords replaced with Japanese equivalents
+- [ ] Check language-settings.md — Demonstratives, Conjunctions, Conversion rules, Reader level
+- [ ] When multiple points exist, count announced upfront (e.g., "There are 3 reasons")
 
 ### Line breaks
-- [ ] Prose: every line is exactly ≤40 characters — break at character 40, no exceptions
-- [ ] List items: never break mid-item — rewrite to fit on one line (≤40 chars)
-- [ ] One blank line between paragraphs
+- [ ] Each sentence on its own line
+- [ ] Blank line at every change of idea
+- [ ] List items: never break mid-item — rewrite to shorten
 - [ ] One blank line before every heading
 - [ ] No blank line immediately after a heading — body text follows directly
 - [ ] No blank lines between list items
 - [ ] One blank line before and after a list block
-- [ ] No 読点 (、) at the end of a sentence — close with 。
+- [ ] No comma at the end of a sentence — close with a period
 
-### Boilerplate removal
-- [ ] 本ドキュメントでは〜説明します → deleted
-- [ ] ご不明な点があれば〜 → deleted
+### Repetition
+- [ ] Check language-settings.md — Repetition
